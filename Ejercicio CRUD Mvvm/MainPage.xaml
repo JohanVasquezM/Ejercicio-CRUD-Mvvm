@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:vm="clr-namespace:Ejercicio_CRUD_Mvvm.ViewModels"
+             BackgroundColor="LightSkyBlue"
+             x:Class="Ejercicio_CRUD_Mvvm.MainPage">
+    
+
+    <ContentPage.BindingContext>
+        <vm:ProductoViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <ListView ItemsSource="{Binding Productos}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Nombre}" Detail="{Binding Descripcion}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Entry Placeholder="ID" Text="{Binding Producto.ID}"  Keyboard="Numeric"  TextColor="Black"/>
+        <Entry Placeholder="Nombre" Text="{Binding Producto.Nombre}" TextColor="Black" />
+        <Entry Placeholder="Descripción" Text="{Binding Producto.Descripcion}" TextColor="Black"/>
+        <Entry Placeholder="Precio" Text="{Binding Producto.Precio}" Keyboard="Numeric" TextColor="Black"/>
+        <Entry Placeholder="Stock" Text="{Binding Producto.Stock}" Keyboard="Numeric" TextColor="Black"/>
+        <Button Text="Guardar" Command="{Binding SaveCommand}" />
+    </StackLayout>
+
+
+</ContentPage>
